@@ -1,0 +1,48 @@
+{
+  "name": "hahow-heros",
+  "version": "1.0.0",
+  "description": "Hahow assignment",
+  "license": "MIT",
+  "author": "Emma Chung <emma2334+github.hahow-heros@gmail.com> (http://emma2334.github.io)",
+  "repository": "https://github.com/emma2334/hahow-heros",
+  "scripts": {
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "^5.0.0",
+    "styled-components": "^5.3.3",
+    "web-vitals": "^2.1.3"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.9.0",
+    "@typescript-eslint/parser": "^5.9.0",
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-config-standard-with-typescript": "^21.0.1",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.2.0",
+    "eslint-plugin-react": "^7.28.0",
+    "husky": "^7.0.0",
+    "lint-staged": "^12.1.7",
+    "prettier": "^2.5.1",
+    "prettier-package-json": "^2.6.0",
+    "typescript": "^4.5.4"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
