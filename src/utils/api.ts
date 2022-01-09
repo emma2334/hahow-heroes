@@ -13,10 +13,10 @@ export function absoluteUrl (path: string): string {
 /**
  * Function for sending an api GET request
  *
- * @param      {string}        path    API path
- * @return     {Promise<any>}  Response
+ * @param      {string}                       path    API path
+ * @return     {Promise<object | undefined>}  Response
  */
-export async function get (path: string): Promise<any> {
+export async function get (path: string): Promise<object | undefined> {
   try {
     return await fetch(absoluteUrl(path), {
       method: 'GET'
@@ -29,11 +29,14 @@ export async function get (path: string): Promise<any> {
 /**
  * Function for sending an api PATCH request
  *
- * @param      {string}        path    API path
- * @param      {object}        body    Request payload
- * @return     {Promise<any>}  Response
+ * @param      {string}                       path    API path
+ * @param      {object}                       body    Request payload
+ * @return     {Promise<string | undefined>}  Response
  */
-export async function patch (path: string, body: object): Promise<any> {
+export async function patch (
+  path: string,
+  body: object
+): Promise<string | undefined> {
   try {
     return await fetch(absoluteUrl(path), {
       method: 'PATCH',
