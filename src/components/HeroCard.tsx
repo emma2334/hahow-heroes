@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Column } from 'components/Grid'
 import { HeroType } from 'utils/hero'
 
 const Thumb = styled.div`
@@ -18,6 +19,7 @@ const Thumb = styled.div`
 
   img {
     display: block;
+    width: 100%;
     transition: transform 0.3s;
   }
 `
@@ -31,6 +33,7 @@ const Content = styled.div`
   z-index: -1;
   letter-spacing: 1px;
   text-transform: uppercase;
+  overflow: hidden;
 
   :before {
     content: "";
@@ -45,10 +48,10 @@ const Content = styled.div`
   }
 `
 
-const Wrapper = styled.div`
+const Wrapper = styled(Column)`
   position: relative;
   display: inline-block;
-  margin: 6px 0 4px;
+  overflow: hidden;
 
   :hover ${Thumb} img {
     transform: scale(1.1);
@@ -71,9 +74,9 @@ const Wrapper = styled.div`
 
 const HeroCard = ({ name, image }: HeroType) => {
   return (
-    <Wrapper>
+    <Wrapper xs="6" md="3">
       <Thumb>
-        <img src={image} alt="" />
+        <img src={image} alt={name} />
       </Thumb>
       <Content>{name}</Content>
     </Wrapper>
