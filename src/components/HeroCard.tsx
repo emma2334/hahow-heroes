@@ -74,7 +74,7 @@ const Wrapper = styled(Column)`
 
 const HeroCard = ({ name, image }: HeroType) => {
   return (
-    <Wrapper xs="6" md="3">
+    <Wrapper xs={6} md={3}>
       <Thumb>
         <img src={image} alt={name} />
       </Thumb>
