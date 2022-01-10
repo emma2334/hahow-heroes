@@ -7,6 +7,12 @@ export default {
   patch: patchHeroProfile
 }
 
+export interface HeroType {
+  id: string;
+  name: string;
+  image: string;
+}
+
 /**
  * Gets the heroes.
  *
