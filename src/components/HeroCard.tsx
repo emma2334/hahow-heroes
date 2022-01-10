@@ -1,21 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Column } from 'components/Grid'
+import ContentWrapper from 'components/Content'
 import { HeroType } from 'utils/hero'
 
 const Thumb = styled.div`
   position: relative;
   overflow: hidden;
-
-  :after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 4px;
-    background: #e62429;
-  }
 
   img {
     display: block;
@@ -24,18 +15,13 @@ const Thumb = styled.div`
   }
 `
 
-const Content = styled.div`
-  position: relative;
-  padding: 16px 10px 17px;
-  background: #151515;
+const Content = styled(ContentWrapper)`
   height: 145px;
-  color: #fff;
   z-index: -1;
-  letter-spacing: 1px;
   text-transform: uppercase;
   overflow: hidden;
 
-  :before {
+  :after {
     content: "";
     position: absolute;
     bottom: 100%;
@@ -53,12 +39,13 @@ const Wrapper = styled(Column)`
   display: inline-block;
   overflow: hidden;
 
-  :hover ${Thumb} img {
-    transform: scale(1.1);
-  }
-
-  :hover ${Content}:before {
-    transform: translate3d(0, 100%, 0);
+  :hover {
+    ${Thumb} img {
+      transform: scale(1.1);
+    }
+    ${Content}:after {
+      transform: translate3d(0, 100%, 0);
+    }
   }
 
   :after {
