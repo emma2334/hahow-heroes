@@ -17,10 +17,10 @@ export interface HeroType {
 }
 
 export interface HeroProfileType {
-  str: string;
-  int: string;
-  agi: string;
-  luk: string;
+  str: number;
+  int: number;
+  agi: number;
+  luk: number;
 }
 
 type Callback = (data: any) => void | any;

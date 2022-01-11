@@ -1,19 +1,20 @@
-import React, { useEffect, useState } from 'react'
-import { getHeroes, HeroType } from 'utils/hero'
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { HeroType } from 'utils/hero'
 import HeroCard from 'components/HeroCard'
 import { Wrapper } from 'components/Grid'
 
-const HeroList = () => {
-  const [list, setList] = useState<HeroType[]>([])
-  useEffect(() => {
-    getHeroes((data) => {
-      setList(data)
-    })
-  }, [])
+interface PropType {
+  list: HeroType[];
+}
+
+const HeroList = ({ list }: PropType) => {
   return (
     <Wrapper display="grid" itemSpace="10px" colFrame={{ xs: 2, md: 4 }}>
       {list.map((hero, i) => (
-        <HeroCard key={hero.id} {...hero} />
+        <Link key={hero.id} to={`/heroes/${hero.id}`}>
+          <HeroCard {...hero} />
+        </Link>
       ))}
     </Wrapper>
   )
