@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import Content from 'components/Content'
 import { Wrapper as DefaultWrapper, Grid } from 'components/Grid'
+import Submit from 'components/Button'
 import { HeroProfileType } from 'utils/hero'
 
 const Wrapper = styled(Content)`
@@ -20,10 +21,11 @@ const Button = styled.button`
   transition-duration: 0.4s;
   cursor: pointer;
 
-  :hover {
+  :not(:disabled):hover {
     background: #e62429b0;
   }
 `
+
 const Column = styled(Grid)`
   &.result {
     margin-top: auto;
@@ -52,10 +54,12 @@ const Skill = styled(DefaultWrapper)`
 `
 
 interface PropType {
+  id: number;
   profile: HeroProfileType;
+  onSubmit: Function;
 }
 
-const HeroProfile = ({ profile }: PropType) => {
+const HeroProfile = ({ id, profile, onSubmit }: PropType) => {
   const [remain, setRemain] = useState<number>(0)
   const [profileState, setProfile] = useState<HeroProfileType>(profile)
 
@@ -88,7 +92,12 @@ const HeroProfile = ({ profile }: PropType) => {
       </Column>
       <Column className="result" col={{ md: 6 }} align="right">
         <div className="remain">Remain points: {remain}</div>
-        <Button>Save</Button>
+        <Submit
+          onClick={() => onSubmit(id, profileState)}
+          disabled={remain !== 0}
+        >
+          Save
+        </Submit>
       </Column>
     </Wrapper>
   )
