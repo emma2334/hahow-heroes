@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { Outlet } from 'react-router-dom'
+import { useParams, Outlet } from 'react-router-dom'
 import { getHeroes, HeroType } from 'utils/hero'
 import Title from 'components/Title'
 import HeroList from 'components/HeroList'
 
-const Hero = () => {
+const Heroes = () => {
+  const params = useParams()
   const [list, setList] = useState<HeroType[]>([])
 
   useEffect(() => {
@@ -16,10 +17,10 @@ const Hero = () => {
   return (
     <>
       <Title>Characters</Title>
-      <HeroList list={list} />
+      <HeroList active={params.id} list={list} />
       <Outlet context={list} />
     </>
   )
 }
 
-export default React.memo(Hero)
+export default React.memo(Heroes)
