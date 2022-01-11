@@ -1,0 +1,82 @@
+import React from 'react'
+import styled from 'styled-components'
+import Content from 'components/Content'
+import { Wrapper as DefaultWrapper, Grid } from 'components/Grid'
+import { HeroProfileType } from 'utils/hero'
+
+const Wrapper = styled(Content)`
+  padding: 30px;
+  * {
+    font-size: 1.5rem;
+  }
+`
+
+const Button = styled.button`
+  min-width: 2rem;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  background: transparent;
+  color: #fff;
+  transition-duration: 0.4s;
+  cursor: pointer;
+
+  :hover {
+    background: #e62429b0;
+  }
+`
+const Column = styled(Grid)`
+  &.result {
+    margin-top: auto;
+
+    .remain {
+      margin: 50px 0 15px;
+    }
+
+    ${Button} {
+      padding: 5px 20px;
+    }
+  }
+`
+
+const Skill = styled(DefaultWrapper)`
+  align-items: center;
+  text-transform: uppercase;
+  :not(:last-child) {
+    margin-bottom: 1rem;
+  }
+
+  .manage {
+    display: inline-flex;
+    justify-content: space-between;
+  }
+`
+
+interface PropType {
+  profile: HeroProfileType;
+  remain?: number;
+}
+
+const HeroProfile = ({ profile, remain = 0 }: PropType) => {
+  return (
+    <Wrapper>
+      <Column col={{ md: 6 }}>
+        {(Object.keys(profile) as Array<keyof HeroProfileType>).map((e) => (
+          <Skill className="skill" key={e}>
+            <Grid col={{ xs: 3 }}>{e}</Grid>
+            <Grid className="manage" col={{ xs: 9 }}>
+              <Button>-</Button>
+              {profile[e]}
+              <Button>+</Button>
+            </Grid>
+          </Skill>
+        ))}
+      </Column>
+      <Column className="result" col={{ md: 6 }} align="right">
+        <div className="remain">Remain points: {remain}</div>
+        <Button>Save</Button>
+      </Column>
+    </Wrapper>
+  )
+}
+
+export default React.memo(HeroProfile)
