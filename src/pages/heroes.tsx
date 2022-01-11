@@ -3,6 +3,7 @@ import { useParams, Outlet } from 'react-router-dom'
 import { getHeroes, HeroType } from 'utils/hero'
 import Title from 'components/Title'
 import HeroList from 'components/HeroList'
+import Loader from 'components/Loader'
 
 const Heroes = () => {
   const params = useParams()
@@ -17,6 +18,7 @@ const Heroes = () => {
   return (
     <>
       <Title>Characters</Title>
+      {!list.length && <Loader />}
       <HeroList active={params.id} list={list} />
       <Outlet context={list} />
     </>

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { getHeroProfile, patchHeroProfile, HeroProfileType } from 'utils/hero'
 import Title from 'components/Title'
 import HeroProfile from 'components/HeroProfile'
+import Loader from 'components/Loader'
 
 const Profile = () => {
   const params = useParams()
@@ -31,9 +32,13 @@ const Profile = () => {
   return (
     <>
       <Title>Profile</Title>
-      {profiles[id] && (
+      {profiles[id]
+        ? (
         <HeroProfile id={id} profile={profiles[id]} onSubmit={onSubmit} />
-      )}
+          )
+        : (
+        <Loader />
+          )}
     </>
   )
 }
