@@ -1,5 +1,11 @@
 import styled, { css } from 'styled-components'
-import { ColType, GridType, calcColWidth, calcGridLayout } from 'utils/grid'
+import {
+  ColType,
+  GridType,
+  genColWidth,
+  genGridLayout,
+  genMaxWidth
+} from 'utils/grid'
 
 interface GridPropType {
   col?: ColType | GridType;
@@ -11,7 +17,7 @@ export const Grid = styled.div`
   width: 100%;
   text-align: ${({ align }: GridPropType) => align};
   flex: ${({ col }: GridPropType) => (col ? '0 0 auto' : '1 0 0')};
-  ${({ col }: GridPropType) => col && calcColWidth(col)}
+  ${({ col }: GridPropType) => col && genColWidth(col)}
 `
 
 interface WrapperPropType {
@@ -27,7 +33,7 @@ export const Wrapper = styled.div`
         return css`
           display: grid;
           grid-gap: ${itemSpace};
-          ${colFrame && calcGridLayout(colFrame)}
+          ${colFrame && genGridLayout(colFrame)}
           ${Grid} {
             max-width: 100%;
           }
@@ -39,4 +45,10 @@ export const Wrapper = styled.div`
         `
     }
   }}}
+`
+
+export const Container = styled.div`
+  margin: auto;
+  width: 100%;
+  ${genMaxWidth()}
 `

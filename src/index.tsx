@@ -9,6 +9,7 @@ const GlobalStyles = createGlobalStyle`
   body {
     font: 400 16px/1.1 RobotoCondensed Bold, Trebuchet MS, Helvetica, Arial,
       sans-serif;
+      margin: 0;
   }
   
   * {
