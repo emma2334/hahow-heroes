@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import Content from 'components/Content'
 import { Wrapper as DefaultWrapper, Grid } from 'components/Grid'
@@ -53,23 +53,38 @@ const Skill = styled(DefaultWrapper)`
 
 interface PropType {
   profile: HeroProfileType;
-  remain?: number;
 }
 
-const HeroProfile = ({ profile, remain = 0 }: PropType) => {
+const HeroProfile = ({ profile }: PropType) => {
+  const [remain, setRemain] = useState<number>(0)
+  const [profileState, setProfile] = useState<HeroProfileType>(profile)
+
+  useEffect(() => {
+    setProfile(profile)
+    setRemain(0)
+  }, [profile])
+
+  const onClick = (type: keyof HeroProfileType, calc: number) => {
+    if ((calc < 0 && profileState[type] < 1) || remain < calc) return
+    setRemain(remain - calc)
+    setProfile({ ...profileState, [type]: profileState[type] + calc })
+  }
+
   return (
     <Wrapper>
       <Column col={{ md: 6 }}>
-        {(Object.keys(profile) as Array<keyof HeroProfileType>).map((e) => (
-          <Skill className="skill" key={e}>
-            <Grid col={{ xs: 3 }}>{e}</Grid>
-            <Grid className="manage" col={{ xs: 9 }}>
-              <Button>-</Button>
-              {profile[e]}
-              <Button>+</Button>
-            </Grid>
-          </Skill>
-        ))}
+        {(Object.keys(profileState) as Array<keyof HeroProfileType>).map(
+          (e) => (
+            <Skill className="skill" key={e}>
+              <Grid col={{ xs: 3 }}>{e}</Grid>
+              <Grid className="manage" col={{ xs: 9 }}>
+                <Button onClick={() => onClick(e, -1)}>-</Button>
+                {profileState[e]}
+                <Button onClick={() => onClick(e, 1)}>+</Button>
+              </Grid>
+            </Skill>
+          )
+        )}
       </Column>
       <Column className="result" col={{ md: 6 }} align="right">
         <div className="remain">Remain points: {remain}</div>
