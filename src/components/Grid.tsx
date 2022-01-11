@@ -7,7 +7,7 @@ import {
   calcGridLayout
 } from 'utils/grid'
 
-export const Column = styled.div`
+export const Grid = styled.div`
   display: inline-block;
   flex: ${(props: GridType) =>
     Object.keys(breakpoint).some((r) => Object.keys(props).includes(r))
@@ -23,7 +23,7 @@ interface RowPropType {
   gridCol?: ColType | GridType;
 }
 
-export const Row = styled.div`
+export const Wrapper = styled.div`
   ${({ display, itemSpace = '0', gridCol }: RowPropType) => {
     switch (display) {
       case 'grid':
@@ -31,7 +31,7 @@ export const Row = styled.div`
           display: grid;
           grid-gap: ${itemSpace};
           ${gridCol && calcGridLayout(gridCol)}
-          ${Column} {
+          ${Grid} {
             max-width: 100%;
           }
         `

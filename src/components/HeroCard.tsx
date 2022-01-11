@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Column } from 'components/Grid'
+import { Grid } from 'components/Grid'
 import ContentWrapper from 'components/Content'
 import { HeroType } from 'utils/hero'
 
@@ -34,7 +34,7 @@ const Content = styled(ContentWrapper)`
   }
 `
 
-const Wrapper = styled(Column)`
+const Wrapper = styled(Grid)`
   position: relative;
   display: inline-block;
   overflow: hidden;
