@@ -61,7 +61,7 @@ const Wrapper = styled(Grid)`
 
 const HeroCard = ({ name, image }: HeroType) => {
   return (
-    <Wrapper xs={6} md={3}>
+    <Wrapper col={{ xs: 6, md: 3 }}>
       <Thumb>
         <img src={image} alt={name} />
       </Thumb>

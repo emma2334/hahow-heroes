@@ -1,6 +1,7 @@
 import styled from 'styled-components'
+import { Wrapper } from 'components/Grid'
 
-export default styled.div`
+export default styled(Wrapper)`
   position: relative;
   padding: 16px 10px 17px;
   background: #151515;

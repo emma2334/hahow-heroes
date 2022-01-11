@@ -30,30 +30,36 @@ export function RWD (bp: keyof GridType, css: string) {
 /**
  * Calculate column width.
  *
- * @param      {GridType}  width   The column width (n/12)
- * @return     {<type>}    A string of col width in each breakpoint
+ * @param      {ColType|GridType}  col     The column width (n/12 of parent width)
+ * @return     {string|undefined}  A string of col width in each breakpoint
  */
-export function calcColWidth (width: GridType) {
-  return (Object.keys(width) as Array<keyof GridType>)
-    .map((bp) => RWD(bp, `max-width: ${(Number(width[bp]) / 12) * 100}%;`))
-    .join('')
+export function calcColWidth (col: ColType | GridType) {
+  if (typeof col === 'number') {
+    return `max-width: ${(Number(col) / 12) * 100}%;`
+  } else if (typeof col === 'object') {
+    return (Object.keys(col) as Array<keyof GridType>)
+      .map((bp) => RWD(bp, `max-width: ${(Number(col[bp]) / 12) * 100}%;`))
+      .join('')
+  }
 }
 
 /**
  * Calculate grid template columns frames.
  *
- * @param      {ColType|GridType}  gridCol  Number of columns in each row
+ * @param      {ColType|GridType}  colFrame  Number of frames in each column
  * @return     {string|undefined}  String of grid-template-columns result
  */
-export function calcGridLayout (gridCol: ColType | GridType) {
+export function calcGridLayout (colFrame: ColType | GridType) {
   const frame = (n: number) =>
     ([...Array(n)] as any[]).map((e) => '1fr').join(' ')
 
-  if (typeof gridCol === 'number') {
-    return `grid-template-columns: ${frame(gridCol)}`
-  } else if (typeof gridCol === 'object') {
-    return (Object.keys(gridCol) as Array<keyof GridType>)
-      .map((bp) => RWD(bp, `grid-template-columns: ${frame(gridCol[bp] || 0)}`))
+  if (typeof colFrame === 'number') {
+    return `grid-template-columns: ${frame(colFrame)}`
+  } else if (typeof colFrame === 'object') {
+    return (Object.keys(colFrame) as Array<keyof GridType>)
+      .map((bp) =>
+        RWD(bp, `grid-template-columns: ${frame(colFrame[bp] || 0)}`)
+      )
       .join('')
   }
 }

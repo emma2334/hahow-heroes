@@ -1,36 +1,33 @@
 import styled, { css } from 'styled-components'
-import {
-  breakpoint,
-  ColType,
-  GridType,
-  calcColWidth,
-  calcGridLayout
-} from 'utils/grid'
+import { ColType, GridType, calcColWidth, calcGridLayout } from 'utils/grid'
+
+interface GridPropType {
+  col?: ColType | GridType;
+  align?: 'left' | 'right' | 'center';
+}
 
 export const Grid = styled.div`
   display: inline-block;
-  flex: ${(props: GridType) =>
-    Object.keys(breakpoint).some((r) => Object.keys(props).includes(r))
-      ? '0 0 auto'
-      : '1 0 0'};
   width: 100%;
-  ${(props: GridType) => calcColWidth(props)}
+  text-align: ${({ align }: GridPropType) => align};
+  flex: ${({ col }: GridPropType) => (col ? '0 0 auto' : '1 0 0')};
+  ${({ col }: GridPropType) => col && calcColWidth(col)}
 `
 
-interface RowPropType {
+interface WrapperPropType {
   display?: string;
   itemSpace?: string;
-  gridCol?: ColType | GridType;
+  colFrame?: ColType | GridType;
 }
 
 export const Wrapper = styled.div`
-  ${({ display, itemSpace = '0', gridCol }: RowPropType) => {
+  ${({ display, itemSpace = '0', colFrame }: WrapperPropType) => {
     switch (display) {
       case 'grid':
         return css`
           display: grid;
           grid-gap: ${itemSpace};
-          ${gridCol && calcGridLayout(gridCol)}
+          ${colFrame && calcGridLayout(colFrame)}
           ${Grid} {
             max-width: 100%;
           }

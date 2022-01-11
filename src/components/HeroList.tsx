@@ -11,7 +11,7 @@ const HeroList = () => {
     })
   }, [])
   return (
-    <Wrapper display="grid" itemSpace="10px" gridCol={{ xs: 2, md: 4 }}>
+    <Wrapper display="grid" itemSpace="10px" colFrame={{ xs: 2, md: 4 }}>
       {list.map((hero, i) => (
         <HeroCard key={hero.id} {...hero} />
       ))}
