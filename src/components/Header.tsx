@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { RWD } from 'utils/grid'
 
@@ -35,12 +36,17 @@ const StyledHeader = styled.header`
     z-index: 1;
     backdrop-filter: blur(5px);
   }
+  a {
+    color: #fff;
+  }
 `
 
 const Header = () => {
   return (
     <StyledHeader>
-      <h1>Hahow Heroes</h1>
+      <h1>
+        <Link to={'/heroes'}>Hahow Heroes</Link>
+      </h1>
     </StyledHeader>
   )
 }

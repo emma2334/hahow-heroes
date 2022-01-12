@@ -9,10 +9,6 @@ const StyledFooter = styled.footer`
 
   a {
     color: #fff;
-    text-decoration: unset;
-    :hover {
-      color: #e62429;
-    }
   }
 
   svg {

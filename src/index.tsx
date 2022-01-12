@@ -9,9 +9,17 @@ const GlobalStyles = createGlobalStyle`
   body {
     font: 400 16px/1.1 RobotoCondensed Bold, Trebuchet MS, Helvetica, Arial,
       sans-serif;
-      margin: 0;
+    margin: 0;
   }
-  
+
+  a {
+    color: #000;
+    text-decoration: unset;
+    :hover {
+      color: #e62429 !important;
+    }
+  }
+
   * {
     box-sizing: border-box;
   }
