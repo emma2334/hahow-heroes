@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import ReactMarkdown from 'react-markdown'
-import Title from 'components/Title'
+import Markdown from 'components/Markdown'
 import Loader from 'components/Loader'
 
 const Home = () => {
@@ -19,19 +18,7 @@ const Home = () => {
       })
   }, [])
 
-  return readme
-    ? (
-    <ReactMarkdown
-      components={{
-        h1: ({ children }) => <Title>{children}</Title>
-      }}
-    >
-      {readme}
-    </ReactMarkdown>
-      )
-    : (
-    <Loader />
-      )
+  return readme ? <Markdown content={readme} /> : <Loader />
 }
 
 export default React.memo(Home)

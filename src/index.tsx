@@ -10,10 +10,11 @@ const GlobalStyles = createGlobalStyle`
     font: 400 16px/1.1 RobotoCondensed Bold, Trebuchet MS, Helvetica, Arial,
       sans-serif;
     margin: 0;
+    line-height: 1.5rem;
   }
 
   a {
-    color: #000;
+    color: #9d0d11;
     text-decoration: unset;
     :hover {
       color: #e62429 !important;
