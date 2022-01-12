@@ -6,6 +6,7 @@ import Submit from 'components/Button'
 import { HeroProfileType } from 'utils/hero'
 
 const Wrapper = styled(Content)`
+  margin-bottom: 20px;
   padding: 30px;
   * {
     font-size: 1.5rem;

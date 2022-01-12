@@ -2,6 +2,8 @@ import styled from 'styled-components'
 
 export default styled.h2`
   position: relative;
+  display: inline-block;
+  width: 100%;
   line-height: 0.9;
   text-transform: uppercase;
   letter-spacing: 1px;

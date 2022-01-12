@@ -11,6 +11,7 @@ interface PropType {
 }
 
 const List = styled(Wrapper)`
+  margin-bottom: 20px;
   ${({ active }: { active?: number | string }) =>
     css`
       > :not(:nth-child(${active})) {
