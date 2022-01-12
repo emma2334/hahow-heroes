@@ -7,7 +7,9 @@ export default { get, patch }
  * @return     {string}  The absolute url
  */
 export function absoluteUrl (path: string): string {
-  return `https://hahow-recruit.herokuapp.com/${path.replace(/^\//, '')}`
+  return /https?:\/\//.exec(path)
+    ? path
+    : `https://hahow-recruit.herokuapp.com/${path.replace(/^\//, '')}`
 }
 
 /**
