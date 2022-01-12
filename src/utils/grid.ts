@@ -7,7 +7,7 @@ export const breakpoint = {
   xxl: '1400px'
 }
 
-const maxWidth = {
+export const maxWidth = {
   sm: '540px',
   md: '720px',
   lg: '960px',
@@ -56,7 +56,7 @@ export function genColWidth (col: ColType | GridType) {
 /**
  * Generate grid template columns frames css.
  *
- * @param      {ColType|GridType}  colFrame  Number of frames in each column
+ * @param      {ColType|GridType}  colFrame  Number of columns in each row
  * @return     {string|undefined}  String of grid-template-columns result
  */
 export function genGridLayout (colFrame: ColType | GridType) {
@@ -64,11 +64,11 @@ export function genGridLayout (colFrame: ColType | GridType) {
     ([...Array(n)] as any[]).map((e) => '1fr').join(' ')
 
   if (typeof colFrame === 'number') {
-    return `grid-template-columns: ${frame(colFrame)}`
+    return `grid-template-columns: ${frame(colFrame)};`
   } else if (typeof colFrame === 'object') {
     return (Object.keys(colFrame) as Array<keyof GridType>)
       .map((bp) =>
-        RWD(bp, `grid-template-columns: ${frame(colFrame[bp] || 0)}`)
+        RWD(bp, `grid-template-columns: ${frame(colFrame[bp] || 0)};`)
       )
       .join('')
   }
@@ -81,6 +81,6 @@ export function genGridLayout (colFrame: ColType | GridType) {
  */
 export function genMaxWidth () {
   return (Object.keys(maxWidth) as Array<keyof typeof maxWidth>)
-    .map((bp) => RWD(bp, `max-width: ${maxWidth[bp]}`))
+    .map((bp) => RWD(bp, `max-width: ${maxWidth[bp]};`))
     .join('')
 }
