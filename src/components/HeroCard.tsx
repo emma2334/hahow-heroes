@@ -7,17 +7,21 @@ import { HeroType } from 'utils/hero'
 const Thumb = styled.div`
   position: relative;
   overflow: hidden;
+  background-color: #7c7c7c;
+  background-image: url(${({ src }: { src: string }) => src});
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.3s;
 
-  img {
+  :before {
+    content: "";
     display: block;
-    width: 100%;
-    transition: transform 0.3s;
+    margin-top: 100%;
   }
 `
 
 const Content = styled(ContentWrapper)`
   height: 145px;
-  z-index: -1;
   text-transform: uppercase;
   overflow: hidden;
 
@@ -40,7 +44,7 @@ const Wrapper = styled(Grid)`
   overflow: hidden;
 
   :hover {
-    ${Thumb} img {
+    ${Thumb} {
       transform: scale(1.1);
     }
     ${Content}:after {
@@ -62,9 +66,7 @@ const Wrapper = styled(Grid)`
 const HeroCard = ({ name, image }: HeroType) => {
   return (
     <Wrapper col={{ xs: 6, md: 3 }}>
-      <Thumb>
-        <img src={image} alt={name} />
-      </Thumb>
+      <Thumb src={image} />
       <Content>{name}</Content>
     </Wrapper>
   )
