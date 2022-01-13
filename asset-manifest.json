@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.js": "/hahow-heroes/static/js/main.319b9180.js",
+    "static/js/787.86e4ed75.chunk.js": "/hahow-heroes/static/js/787.86e4ed75.chunk.js",
+    "index.html": "/hahow-heroes/index.html",
+    "main.319b9180.js.map": "/hahow-heroes/static/js/main.319b9180.js.map",
+    "787.86e4ed75.chunk.js.map": "/hahow-heroes/static/js/787.86e4ed75.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.319b9180.js"
+  ]
+}
