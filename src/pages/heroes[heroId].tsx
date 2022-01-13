@@ -7,14 +7,14 @@ import Loader from 'components/Loader'
 
 const Profile = () => {
   const params = useParams()
-  const id = Number(params.id)
+  const heroId = Number(params.heroId)
   const [profiles, setProfile] = useState<{ [key: string]: HeroProfileType }>(
     {}
   )
   const onSubmit = (id: number, profile: HeroProfileType) => {
-    patchHeroProfile(id, profile, (result) => {
+    patchHeroProfile(heroId, profile, (result) => {
       if (result === 'OK') {
-        setProfile((prev) => ({ ...prev, [id]: profile }))
+        setProfile((prev) => ({ ...prev, [heroId]: profile }))
         alert('更新成功！')
       } else {
         alert('更新失敗')
@@ -23,18 +23,22 @@ const Profile = () => {
   }
 
   useEffect(() => {
-    !profiles[id] &&
-      getHeroProfile(id, (data) => {
-        setProfile((prev) => ({ ...prev, [id]: data }))
+    !profiles[heroId] &&
+      getHeroProfile(heroId, (data) => {
+        setProfile((prev) => ({ ...prev, [heroId]: data }))
       })
-  }, [params.id])
+  }, [params.heroId])
 
   return (
     <>
       <Title>Profile</Title>
-      {profiles[id]
+      {profiles[heroId]
         ? (
-        <HeroProfile id={id} profile={profiles[id]} onSubmit={onSubmit} />
+        <HeroProfile
+          id={heroId}
+          profile={profiles[heroId]}
+          onSubmit={onSubmit}
+        />
           )
         : (
         <Loader />

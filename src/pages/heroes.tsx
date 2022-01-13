@@ -19,7 +19,7 @@ const Heroes = () => {
     <>
       <Title>Characters</Title>
       {!list.length && <Loader />}
-      <HeroList active={params.id} list={list} />
+      <HeroList active={params.heroId} list={list} />
       <Outlet context={list} />
     </>
   )
