@@ -49,6 +49,7 @@ export const Wrapper = styled.div`
 
 export const Container = styled.div`
   margin: auto;
+  padding: 0 15px;
   width: 100%;
   ${genMaxWidth()}
 `

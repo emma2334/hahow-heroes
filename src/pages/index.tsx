@@ -15,6 +15,7 @@ const Home = () => {
       })
       .catch((e) => {
         console.warn(e)
+        setReadme('404: Not Found')
       })
   }, [])
 
