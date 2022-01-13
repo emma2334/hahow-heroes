@@ -8,7 +8,7 @@ const StyledHeader = styled.header`
   overflow: hidden;
   width: 100%;
   height: 175px;
-  background-image: url(/hahow.jpg);
+  background-image: url(${process.env.PUBLIC_URL}/hahow.jpg);
   background-size: cover;
   background-position: center top;
   ${RWD('lg', 'height: 300px;')}
